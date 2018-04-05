@@ -1,5 +1,6 @@
 package com.minwoo.database.databasedemo;
 
+import com.minwoo.database.databasedemo.dao.PersonJdbcDao;
 import com.minwoo.database.databasedemo.entity.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Date;
 
 @SpringBootApplication
-public class DatabaseDemoApplication implements CommandLineRunner {
+public class SpringJdbcDemoApplication implements CommandLineRunner {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -19,7 +20,7 @@ public class DatabaseDemoApplication implements CommandLineRunner {
 	private PersonJdbcDao personJdbcDao;
 
 	public static void main(String[] args) {
-		SpringApplication.run(DatabaseDemoApplication.class, args);
+		SpringApplication.run(SpringJdbcDemoApplication.class, args);
 	}
 
 	@Override

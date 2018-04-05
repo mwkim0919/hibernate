@@ -1,4 +1,4 @@
-package com.minwoo.database.databasedemo;
+package com.minwoo.database.databasedemo.dao;
 
 import com.minwoo.database.databasedemo.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;

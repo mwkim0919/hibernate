@@ -1,3 +1,4 @@
+/*
 CREATE TABLE person
 (
   id INTEGER NOT NULL,
@@ -6,6 +7,7 @@ CREATE TABLE person
   birth_date TIMESTAMP,
   PRIMARY KEY (id)
 );
+*/
 
 INSERT INTO PERSON (ID,NAME,LOCATION,BIRTH_DATE)
 VALUES (10001, 'Minwoo', 'Vancouver', sysdate());
