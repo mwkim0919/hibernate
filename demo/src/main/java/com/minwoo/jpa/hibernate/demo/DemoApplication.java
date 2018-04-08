@@ -27,5 +27,6 @@ public class DemoApplication implements CommandLineRunner {
 		logger.info("{}", course);
 
 		courseRepository.save(new Course("Spring in 100 steps"));
+		courseRepository.playWithEntityManager();
 	}
 }
