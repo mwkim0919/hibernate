@@ -35,6 +35,9 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses") // mappedBy will fix two join tables problem
+    private List<Student> students = new ArrayList<>();
+
     protected Course() {
     }
 
@@ -66,6 +69,14 @@ public class Course {
     // Remove a single review to a course
     public void removeReview(Review review) {
         this.reviews.remove(review);
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 
     @Override

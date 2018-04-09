@@ -2,6 +2,7 @@ package com.minwoo.jpa.hibernate.demo;
 
 import com.minwoo.jpa.hibernate.demo.entities.Course;
 import com.minwoo.jpa.hibernate.demo.entities.Review;
+import com.minwoo.jpa.hibernate.demo.entities.Student;
 import com.minwoo.jpa.hibernate.demo.repositories.CourseRepository;
 import com.minwoo.jpa.hibernate.demo.repositories.StudentRepository;
 import org.slf4j.Logger;
@@ -31,10 +32,8 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<Review> reviews = new ArrayList<>();
-		reviews.add(new Review("2", "It is an okay course"));
-		reviews.add(new Review("4", "so so"));
-
-		courseRepository.addReviewsForCourse(10003L, reviews);
+		Student student = new Student("Jack");
+		Course course = new Course("Microservices in 100 Steps");
+		studentRepository.insertStudentAndCourse(student, course);
 	}
 }

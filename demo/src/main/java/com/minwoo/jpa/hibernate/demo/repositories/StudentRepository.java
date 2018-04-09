@@ -1,5 +1,6 @@
 package com.minwoo.jpa.hibernate.demo.repositories;
 
+import com.minwoo.jpa.hibernate.demo.entities.Course;
 import com.minwoo.jpa.hibernate.demo.entities.Passport;
 import com.minwoo.jpa.hibernate.demo.entities.Student;
 import org.slf4j.Logger;
@@ -55,5 +56,15 @@ public class StudentRepository {
         // Persistence Context (student, passport++)
         student.setName("Ranga - updated");
         // Persistence Context (student++, passport++)
+    }
+
+    public void insertStudentAndCourse(Student student, Course course) {
+//        Student student = new Student("Jack");
+//        Course course = new Course("Microservices in 100 Steps");
+        student.addCourse(course);
+        course.addStudent(student);
+
+        entityManager.persist(student);
+        entityManager.persist(course);
     }
 }
