@@ -2,6 +2,7 @@ package com.minwoo.jpa.hibernate.demo;
 
 import com.minwoo.jpa.hibernate.demo.entities.Course;
 import com.minwoo.jpa.hibernate.demo.repositories.CourseRepository;
+import com.minwoo.jpa.hibernate.demo.repositories.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	private CourseRepository courseRepository;
 
+	@Autowired
+	private StudentRepository studentRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -28,5 +32,7 @@ public class DemoApplication implements CommandLineRunner {
 
 		courseRepository.save(new Course("Spring in 100 steps"));
 		courseRepository.playWithEntityManager();
+
+		studentRepository.saveStudentWithPassport();
 	}
 }
