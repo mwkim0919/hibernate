@@ -1,6 +1,7 @@
 package com.minwoo.jpa.hibernate.demo;
 
 import com.minwoo.jpa.hibernate.demo.entities.Course;
+import com.minwoo.jpa.hibernate.demo.entities.Review;
 import com.minwoo.jpa.hibernate.demo.repositories.CourseRepository;
 import com.minwoo.jpa.hibernate.demo.repositories.StudentRepository;
 import org.slf4j.Logger;
@@ -9,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -27,12 +31,10 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Course course = courseRepository.findById(10001L);
-		logger.info("{}", course);
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(new Review("2", "It is an okay course"));
+		reviews.add(new Review("4", "so so"));
 
-		courseRepository.save(new Course("Spring in 100 steps"));
-		courseRepository.playWithEntityManager();
-
-		studentRepository.saveStudentWithPassport();
+		courseRepository.addReviewsForCourse(10003L, reviews);
 	}
 }

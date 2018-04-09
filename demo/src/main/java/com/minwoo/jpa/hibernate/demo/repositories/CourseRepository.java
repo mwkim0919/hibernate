@@ -1,6 +1,7 @@
 package com.minwoo.jpa.hibernate.demo.repositories;
 
 import com.minwoo.jpa.hibernate.demo.entities.Course;
+import com.minwoo.jpa.hibernate.demo.entities.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @Transactional // import the spring one
@@ -63,5 +65,16 @@ public class CourseRepository {
 
         Course course3 = findById(10001L);
         course3.setName("JPA in 50 steps - updated");
+    }
+
+    public void addReviewsForCourse(Long courseId, List<Review> reviews) {
+        Course course = findById(courseId);
+        logger.info("course.getReivews -> {}", course.getReviews());
+
+        for (Review review : reviews) {
+            course.addReview(review);
+            review.setCourse(course);
+            entityManager.persist(review);
+        }
     }
 }

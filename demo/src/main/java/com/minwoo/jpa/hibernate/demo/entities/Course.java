@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Course") // maps to table in DB by name.
@@ -30,6 +32,9 @@ public class Course {
     @CreationTimestamp // Hibernate will update this column whenever a row has been inserted.
     private LocalDateTime createdDate;
 
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviews = new ArrayList<>();
+
     protected Course() {
     }
 
@@ -47,6 +52,20 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    // Adding a single review to a course
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
+
+    // Remove a single review to a course
+    public void removeReview(Review review) {
+        this.reviews.remove(review);
     }
 
     @Override
