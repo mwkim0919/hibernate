@@ -35,14 +35,6 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		Student student = new Student("Jack");
-//		Course course = new Course("Microservices in 100 Steps");
-//		studentRepository.insertStudentAndCourse(student, course);
-		Employee employee1 = new FullTimeEmployee("Jack", new BigDecimal(10000));
-		Employee employee2 = new PartTimeEmployee("Jill", new BigDecimal(50));
-		employeeRepository.insert(employee1);
-		employeeRepository.insert(employee2);
 
-		logger.info("All employees -> {}", employeeRepository.retrieveAllEmployees());
 	}
 }
