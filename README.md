@@ -11,3 +11,15 @@
   * **Dirty Read**: A transaction reading a value before the value gets updated by another transaction
   * **Non Repeatable Read**: A transaction reading the same value multiple time but the value being read is different each time
   * **Phanthom Read**: A transaction having a different number of results at different times.
+
+* 4 Isolation Levels ("possible" mean it is possible to happen)
+  * **Read Uncommitted**: locking the value being updated
+  * **Read Committed**: locking the values being updated or read (if a value is being read, no other transaction cannot update the value  until the read is done)
+  * **Serializable**: locking any results from contraints (WHERE clause) - TABLE LOCK
+
+|               | **Dirty Read** | **Non-repeatable Read** | **Phanthom Read** | **Performance** |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| **Read Uncommitted** | Possible | Possible | Possible | Super |
+| **Read Committed** | Solved  | Possible | Possible | Good |
+| **Repeatable Read** | Solved  | Solved | Possible | Okay |
+| **Serializable** | Solved  | Solved | Solved | Bad |
