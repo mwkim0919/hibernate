@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -67,8 +68,18 @@ public class CourseRepositoryTest {
 	}
 
 	@Test
-	@Transactional
+	/**
+	 * Import from Spring vs Javax (JPA)
+	 * Javax (JPA): if only using 1 database, then this is good
+	 * Spring: if you want to manage transactions across multiple databases
+	 */
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
 	public void retrieveCourseForReview() {
+
+		// database 1
+		// database 2
+		// mq
+
 		Review review = entityManager.find(Review.class, 50001L);
 		logger.info("{}", review.getCourse());
 	}
