@@ -4,6 +4,24 @@ INSERT INTO Course(id, name, created_date, last_updated_date)
 VALUES (10002, 'Spring Boot in 100 steps', sysdate(), sysdate());
 INSERT INTO Course(id, name, created_date, last_updated_date)
 VALUES (10003, 'Microservices in 50 steps', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10004, 'Dummy1', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10005, 'Dummy2', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10006, 'Dummy3', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10007, 'Dummy4', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10008, 'Dummy5', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10009, 'Dummy6', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10010, 'Dummy7', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10011, 'Dummy8', sysdate(), sysdate());
+INSERT INTO Course(id, name, created_date, last_updated_date)
+VALUES (10012, 'Dummy9', sysdate(), sysdate());
 
 INSERT INTO Passport(id, number)
 VALUES (40001, 'E123456');

@@ -1,5 +1,6 @@
 package com.minwoo.jpa.hibernate.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -36,6 +37,7 @@ public class Course {
     private List<Review> reviews = new ArrayList<>();
 
     @ManyToMany(mappedBy = "courses") // mappedBy will fix two join tables problem
+    @JsonIgnore
     private List<Student> students = new ArrayList<>();
 
     protected Course() {
