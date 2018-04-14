@@ -23,3 +23,7 @@
 | **Read Committed** | Solved  | Possible | Possible | Good |
 | **Repeatable Read** | Solved  | Solved | Possible | Okay |
 | **Serializable** | Solved  | Solved | Solved | Bad |
+
+### Caching with Hibernate & JPA
+* **1st Level Cache:** Data cached for single transaction
+* **2nd Level Cache:** Data cached for multiple transactions
