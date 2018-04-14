@@ -2,12 +2,15 @@ package com.minwoo.jpa.hibernate.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Entity
 @Table(name = "Course") // maps to table in DB by name.
@@ -19,7 +22,11 @@ import java.util.List;
         }
 )
 @Cacheable
+@SQLDelete(sql = "update course set is_deleted=true where id=?") // Soft delete annotation
+@Where(clause = "is_deleted = false") // This will filter out any rows with is_deleted = false
 public class Course {
+
+    private static Logger LOGGER = Logger.getLogger(Course.class.getName());
 
     @Id
     @GeneratedValue
@@ -40,6 +47,15 @@ public class Course {
     @ManyToMany(mappedBy = "courses") // mappedBy will fix two join tables problem
     @JsonIgnore
     private List<Student> students = new ArrayList<>();
+
+    // for Soft delete
+    private boolean isDeleted;
+
+    @PreRemove // for Soft delete (JPA Life-cycle methods)
+    private void preRemove() {
+        LOGGER.info("Setting isDeleted to True");
+        this.isDeleted = true;
+    }
 
     protected Course() {
     }

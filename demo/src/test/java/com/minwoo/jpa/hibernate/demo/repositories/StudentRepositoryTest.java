@@ -1,6 +1,7 @@
 package com.minwoo.jpa.hibernate.demo.repositories;
 
 import com.minwoo.jpa.hibernate.demo.DemoApplication;
+import com.minwoo.jpa.hibernate.demo.entities.Address;
 import com.minwoo.jpa.hibernate.demo.entities.Passport;
 import com.minwoo.jpa.hibernate.demo.entities.Student;
 import org.junit.Test;
@@ -52,6 +53,16 @@ public class StudentRepositoryTest {
 	@Transactional
 	public void retrieveStudentsAndCourses() {
 		Student student = entityManager.find(Student.class, 20001L);
+		logger.info("student -> {}", student);
+		logger.info("courses -> {}", student.getCourses());
+	}
+
+	@Test
+	@Transactional
+	public void setAddressDetails() {
+		Student student = entityManager.find(Student.class, 20001L);
+		student.setAddress(new Address("No 101", "Some Street", "Hyderabad"));
+		entityManager.flush();
 		logger.info("student -> {}", student);
 		logger.info("courses -> {}", student.getCourses());
 	}
