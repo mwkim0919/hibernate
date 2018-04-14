@@ -33,3 +33,28 @@
 | PersistenceContext1(FLC) | PersistenceContext2(FLC) | PersistenceContext3(FLC) | PersistenceContext4(FLC) |
 | Second Level Cache | Second Level Cache | Second Level Cache | Second Level Cache |
 | Database | Database | Database | Database |
+
+### JPA Entity Life Cycle
+* **PostLoad:** called after an entity is retrieved and loaded
+* **PostPersist:** called after an entity is persisted into DB
+* **PostRemove:** called after an entity is deleted from DB
+* **PostUpdate:** called after an entity is updated
+* **PrePersist:** called before an entity is persisted
+* **PreRemove:** called before an entity is deleted
+* **PreUpdate:** called before an entity is updated
+
+### Performance Tuning Tips
+* DONALD KNUTH
+  * "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil."
+* INDEXES
+* USE APPROPRIATE CACHING
+  * 1st level Caching - Don't make this too big
+  * 2nd level Caching
+  * Distributed Cache
+  * Be careful about the size of 1st level Cache
+* EAGER VS LAZY FETCH
+  * Use Lazy fetching mostly
+  * Remember that all mapping ToOne (*@ManyToOne and @OneToOne*) are EAGER by default
+* N+1 PROBLEM
+  * Entity Graph & Named Entity Graphs & Dynamic Entity Graphs
+  * Join Fetch Clause
