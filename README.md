@@ -27,3 +27,9 @@
 ### Caching with Hibernate & JPA
 * **1st Level Cache:** Data cached for single transaction
 * **2nd Level Cache:** Data cached for multiple transactions
+
+| Transaction 1 | Transaction 2 | Transaction 3 | Transaction 4 |
+| ------------- | ------------- | ------------- | ------------- |
+| PersistenceContext1(FLC) | PersistenceContext2(FLC) | PersistenceContext3(FLC) | PersistenceContext4(FLC) |
+| Second Level Cache | Second Level Cache | Second Level Cache | Second Level Cache |
+| Database | Database | Database | Database |
