@@ -84,4 +84,17 @@ public class CourseRepositoryTest {
 		logger.info("{}", review.getCourse());
 	}
 
+	@Test
+	@Transactional // If this is not here, the 2nd findById won't use cache because they are in different transactions!
+	public void findById_firstLevelCacheDemo() {
+		Course course = courseRepository.findById(10001L);
+		logger.info("First Course Retrieved {}", course);
+
+		Course course1 = courseRepository.findById(10001L);
+		logger.info("First Course Retrieved Again {}", course1);
+
+		assertEquals("JPA in 50 steps", course.getName());
+		assertEquals("JPA in 50 steps", course1.getName());
+	}
+
 }
